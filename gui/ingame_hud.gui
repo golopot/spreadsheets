@@ -45,6 +45,8 @@ template information_panels_fullscreens {
 	politics_panel = {}
 	politics_panel_change_law = {}
 	tech_tree_panel = {}
+	# mod spreadsheet
+	spreadsheets_panel = {}
 }
 
 template map_list_panels {

@@ -1,0 +1,91 @@
+types spreadsheets_panel_types
+{
+	type spreadsheets_panel = fullscreen_block_window {
+		name = "spreadsheets_panel"
+		visible = "[GetVariableSystem.Exists('more_spreadsheets')]"
+
+		state = {
+			name = 1
+			trigger_on_create = yes
+			on_start = "[GetVariableSystem.Set('ms_last_tab', 'states')]"
+		}
+
+		blockoverride "back_onclick" {
+			onclick = "[GetVariableSystem.Clear('more_spreadsheets')]"
+		}
+
+		blockoverride "close_onclick" {
+			onclick = "[GetVariableSystem.Clear('more_spreadsheets')]"
+		}
+
+		blockoverride "animation_state_block" {
+			state = {
+				name = _show
+				start_sound = {
+					soundeffect = "snapshot:/Dynamic/mute_world_80"
+				}
+				start_sound = {
+					soundeffect = "snapshot:/Dynamic/mute_vfx_war_100"
+
+				}
+			}
+		}
+
+		blockoverride "window_header_name"
+		{
+			text = "MS_PANEL_HEADER"
+		}
+
+		blockoverride "fixed_top"
+		{
+			tab_buttons = {
+				blockoverride "first_button" {
+					text = "MS_STATES"
+				}
+				blockoverride "first_button_click" {
+					onclick = "[GetVariableSystem.Set('more_spreadsheets', 'states')]"
+					onclick = "[GetVariableSystem.Set('ms_last_tab', 'states')]"
+				}
+				blockoverride "first_button_visibility" {
+					visible = "[GetVariableSystem.HasValue('more_spreadsheets', 'states')]"
+				}
+				blockoverride "first_button_visibility_checked" {
+					visible = "[Not( GetVariableSystem.HasValue('more_spreadsheets', 'states') )]"
+				}
+				blockoverride "first_button_selected" {
+					text = "MS_STATES"
+				}
+			}
+		}
+
+		blockoverride "entire_content_area" {
+			fullscreen_scrollarea = {
+				visible = "[GetVariableSystem.HasValue('more_spreadsheets', 'states')]"
+
+				blockoverride "scrollarea_content" {
+					spreadsheets_panel_states = {
+					}
+				}
+			}
+
+			fullscreen_scrollarea = {
+				visible = "[GetVariableSystem.HasValue('more_spreadsheets', 'market')]"
+
+				blockoverride "scrollarea_content" {
+					spreadsheets_panel_market = {
+					}
+				}
+			}
+
+			fullscreen_scrollarea = {
+				visible = "[GetVariableSystem.HasValue('more_spreadsheets', 'pops')]"
+
+				blockoverride "scrollarea_content" {
+					spreadsheets_panel_pops = {
+					}
+				}
+			}
+		}
+	}
+}
+

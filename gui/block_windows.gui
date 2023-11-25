@@ -768,7 +768,10 @@ types windows {
 					back_button_large = {
 						position = { 11 15 }
 						parentanchor = top|left
-						onclick = "[InformationPanelBar.OpenPreviousPanel]"
+						# mod spreadsheet
+						block "back_onclick" {
+							onclick = "[InformationPanelBar.OpenPreviousPanel]"
+						}
 						input_action = "back"
 					}
 				}
@@ -777,7 +780,10 @@ types windows {
 					name = "tutorial_highlight_close_button"
 					position = { -11 15 }
 					parentanchor = top|right
-					onclick = "[InformationPanelBar.ClosePanel]"
+					# mod spreadsheet
+					block "close_onclick" {
+						onclick = "[InformationPanelBar.ClosePanel]"
+					}
 					shortcut = "close_window"
 				}
 			}
@@ -818,8 +824,8 @@ types windows {
 }
 
 template fullscreen_show {
-	visible = "[Or(Or(InformationPanelBar.IsPanelOpen('politics'), InformationPanelBar.IsPanelOpen('politics_panel_change_law')), InformationPanelBar.IsPanelOpen('tech_tree'))]"
+	visible = "[Or(Or(Or(InformationPanelBar.IsPanelOpen('politics'), InformationPanelBar.IsPanelOpen('politics_panel_change_law')), InformationPanelBar.IsPanelOpen('tech_tree')), GetVariableSystem.Exists('more_spreadsheets'))]"
 }
 template fullscreen_hide {
-	visible = "[Not(Or(Or(InformationPanelBar.IsPanelOpen('politics'), InformationPanelBar.IsPanelOpen('politics_panel_change_law')), InformationPanelBar.IsPanelOpen('tech_tree')))]"
+	visible = "[Not(Or(Or(Or(InformationPanelBar.IsPanelOpen('politics'), InformationPanelBar.IsPanelOpen('politics_panel_change_law')), InformationPanelBar.IsPanelOpen('tech_tree')), GetVariableSystem.Exists('more_spreadsheets')))]"
 }
