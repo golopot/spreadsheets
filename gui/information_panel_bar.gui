@@ -20,6 +20,7 @@
 
 @maplist_position = 600
 
+### MOD MORE SPREADSHEETS
 @spreadsheet_position = 640
 
 types information_panel_bar_types {
@@ -267,7 +268,7 @@ types information_panel_bar_types {
 				sidebar_label_button = {
 					position = { -100 @military_position }
 					blockoverride "onclick" {
-						onclick = "[InformationPanelBar.OpenPanelCycleTabs('military', 'army|navy')]"
+						onclick = "[InformationPanelBar.OpenPanelCycleTabs('military', 'army|mobilization|navy')]"
 						input_action = "open_military"
 					}
 				}
@@ -291,7 +292,7 @@ types information_panel_bar_types {
 						blockoverride "button_selected" {
 							visible = "[InformationPanelBar.IsPanelOpen('military')]"
 						}
-						onclick = "[InformationPanelBar.OpenPanelCycleTabs('military', 'army|navy')]"
+						onclick = "[InformationPanelBar.OpenPanelCycleTabs('military', 'army|mobilization|navy')]"
 					}
 				}
 				sidebar_tooltip_area = {
@@ -676,7 +677,7 @@ types information_panel_bar_types {
 				}
 
 
-				### MOD: MORE SPREADSHEETS -> SPREADSHEET
+				### MOD MORE SPREADSHEETS
 				sidebar_label_button_small = {
 					position = { -100 @spreadsheet_position }
 					blockoverride "onclick" {
